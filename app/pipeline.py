@@ -7,16 +7,28 @@ from haystack.components.writers import DocumentWriter
 from haystack.components.retrievers.in_memory import InMemoryEmbeddingRetriever
 from haystack.components.builders import ChatPromptBuilder
 from haystack.dataclasses import ChatMessage
-from ollama import Client
+from transformers import pipeline
+from haystack.document_stores.types import DuplicatePolicy
+import uuid
 
-from app.data_loaders import NotionDataLoader, SlackDataLoader
+
+from abc import ABC, abstractmethod
+from typing import List
+
+from notion_haystack.notion_exporter import NotionExporter
+from haystack import Document
+from slack_sdk import WebClient
+from slack_sdk.errors import SlackApiError
+from huggingface_hub import login  # Import login function
+from openai import AzureOpenAI
 
 NOTION_API_TOKEN = os.getenv("NOTION_API_TOKEN")
 SLACK_TOKEN = os.getenv("SLACK_TOKEN")
 SLACK_CHANNEL_ID = os.getenv("SLACK_CHANNEL_ID")
 LLAMA2_HOST = os.getenv("LLAMA2_HOST")
 NOTION_PAGE_ID = os.getenv("NOTION_PAGE_ID")
-
+AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
+AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 
 def load_all_data():
     """Loads data from all sources."""
@@ -25,8 +37,13 @@ def load_all_data():
     slack_loader = SlackDataLoader(token=SLACK_TOKEN, channel_id=SLACK_CHANNEL_ID)
     notion_data = notion_loader.load_data()
     slack_data = slack_loader.load_data()
-    all_documents = notion_data + slack_data
+    all_documents = []
+    for doc in notion_data + slack_data:
+        doc.id = str(uuid.uuid4())
+        all_documents.append(doc)
+
     return all_documents
+
 
 
 documents = load_all_data()
@@ -39,6 +56,7 @@ indexing_pipeline.add_component(
 indexing_pipeline.add_component(instance=DocumentWriter(document_store=document_store), name="doc_writer")
 indexing_pipeline.connect("doc_embedder.documents", "doc_writer.documents")
 indexing_pipeline.run({"doc_embedder": {"documents": documents}})
+
 
 template = [ChatMessage.from_system("""
 You are a Tech Support Engineer, answering questions to people integrating Crustdata's APIs. Use the context provided to answer the question. If the answer involves an API request, provide an example:
@@ -149,24 +167,42 @@ class APIValidationComponent:
         api_call['status'] = "fixed"
         return api_call, error
 
-
-client = Client(host=LLAMA2_HOST)
-
-
 @component
-class LocalLLM:
+class AzureOpenAIModel:
+    def __init__(self):
+        # Initialize Azure OpenAI client
+        self.client = AzureOpenAI(
+            api_key=AZURE_OPENAI_API_KEY,
+            api_version="2024-02-15-preview",
+            azure_endpoint=AZURE_OPENAI_ENDPOINT
+        )
+
     @component.output_types(replies=list[ChatMessage])
     def run(self, prompt: list[ChatMessage]):
-        messages = [{'role': msg.role, 'content': msg.content} for msg in prompt]
-        response = client.chat(model='llama2', messages=messages)
-        return {"replies": [ChatMessage.from_assistant(response['message']['content'])]}
+        """Process the input prompt and generate a response using Azure OpenAI."""
+        try:
+            messages = [{"role": msg.role, "content": msg.content} for msg in prompt]
+            
+            response = self.client.chat.completions.create(
+                model="gpt-35-turbo",  
+                messages=messages,
+                temperature=0.7,
+                max_tokens=800
+            )
+            
+            assistant_reply = response.choices[0].message.content
+            return {"replies": [ChatMessage.from_assistant(assistant_reply)]}
 
+        except Exception as e:
+            print(f"Error in Azure OpenAI call: {e}")
+            return {"replies": [ChatMessage.from_assistant("Sorry, I encountered an error processing your request.")]}
 
+  
 rag_pipe = Pipeline()
 rag_pipe.add_component("embedder", SentenceTransformersTextEmbedder(model="sentence-transformers/all-MiniLM-L6-v2"))
 rag_pipe.add_component("retriever", InMemoryEmbeddingRetriever(document_store=document_store))
 rag_pipe.add_component("prompt_builder", ChatPromptBuilder(template=template))
-rag_pipe.add_component("llm", LocalLLM())
+rag_pipe.add_component("llm", AzureOpenAIModel())
 rag_pipe.add_component("api_validator", APIValidationComponent())
 
 rag_pipe.connect("embedder.embedding", "retriever.query_embedding")

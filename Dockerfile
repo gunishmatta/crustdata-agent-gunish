@@ -1,18 +1,16 @@
-# Use an official Python image
 FROM python:3.10-slim
 
-# Set working directory
 WORKDIR /app
 
-# Copy application files
+# Copy the pipeline.py and requirements.txt into the container
 COPY app/pipeline.py /app
 COPY requirements.txt /app
 
-# Install dependencies
+# Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the app port
+# Expose port 8000
 EXPOSE 8000
 
-# Command to run the application
+# Run the application
 CMD ["python", "main.py"]
