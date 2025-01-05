@@ -1,0 +1,18 @@
+services:
+  app:
+    build:
+      context: ./app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - llm
+    volumes:
+      - ./app:/app
+
+  llm:
+    build:
+      context: ./llm
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./llm/model:/llm/model
