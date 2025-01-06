@@ -12,7 +12,7 @@ class QdrantSingleton:
             QdrantSingleton._instance = QdrantDocumentStore(
                 embedding_dim=384,
                 similarity="cosine",
-                host="localhost"
+                host=Config.QDRANT_URL
             )
         return QdrantSingleton._instance
 

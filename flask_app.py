@@ -1,5 +1,6 @@
-from flask import Flask, jsonify, request
 import logging
+
+from flask import Flask, jsonify, request
 
 from app.ai.pipeline import RagPipeSingleton
 

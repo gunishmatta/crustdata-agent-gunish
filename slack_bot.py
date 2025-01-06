@@ -1,9 +1,11 @@
 import logging
 import re
+
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
+
 from app import Config
 from app.ai.pipeline import RagPipeSingleton
 

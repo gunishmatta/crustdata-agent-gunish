@@ -4,12 +4,14 @@ from haystack.components.embedders import (
     SentenceTransformersDocumentEmbedder, SentenceTransformersTextEmbedder)
 from haystack.components.writers import DocumentWriter
 from haystack.dataclasses import ChatMessage
-from haystack_integrations.components.retrievers.qdrant import QdrantEmbeddingRetriever
+from haystack_integrations.components.retrievers.qdrant import \
+    QdrantEmbeddingRetriever
 
 from app.ai.ai import AzureOpenAIModel
 from app.ai.api_validation import APIValidationComponent
 from app.ai.document_store import QdrantSingleton
 from app.ai.load_data import load_all_data
+
 
 class DataLoaderSingleton:
     _documents = None

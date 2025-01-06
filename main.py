@@ -1,4 +1,5 @@
 import multiprocessing
+
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 from app import Config
