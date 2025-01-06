@@ -2,23 +2,23 @@ name: Trigger auto deployment for crustdata-agent-backend
 
 # When this action will be executed
 on:
-  # Automatically trigger it when detected changes in repo
+  # Automatically trigger it when detected changes in the repo
   push:
-    branches: 
+    branches:
       [ master ]
     paths:
     - '**'
     - '.github/workflows/crustdata-agent-backend-AutoDeployTrigger-aa8faeed-d769-4a44-9834-537652d0f28d.yml'
 
-  # Allow manual trigger 
-  workflow_dispatch:      
+  # Allow manual trigger
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions: 
-      id-token: write #This is required for requesting the OIDC JWT Token
-      contents: read #Required when GH token is used to authenticate with private repo
+    permissions:
+      id-token: write # This is required for requesting the OIDC JWT Token
+      contents: read # Required when GH token is used to authenticate with a private repo
 
     steps:
       - name: Checkout to the branch
@@ -35,14 +35,10 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          _dockerfilePathKey_: _dockerfilePath_
-          registryUrl: 
+          dockerfilePath: ./Dockerfile # Provide the correct Dockerfile path
+          registryUrl: ${{ secrets.CRUSTDATAAGENTBACKEND_REGISTRY_URL }} # Add registry URL secret
           registryUsername: ${{ secrets.CRUSTDATAAGENTBACKEND_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.CRUSTDATAAGENTBACKEND_REGISTRY_PASSWORD }}
           containerAppName: crustdata-agent-backend
           resourceGroup: gunish
-          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
-          _buildArgumentsKey_: |
-            _buildArgumentsValues_
-
-
+          imageToBuild: ${{ secrets.CRUSTDATAAGENTBACKEND_REGISTRY_URL }}/crustdata-agent-backend:${{ github.sha }}

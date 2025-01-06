@@ -4,34 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e19fd9ac-cb5c-4f9a-9b90-912721094713" name="Changes" comment="built pipeline and rest api">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="e19fd9ac-cb5c-4f9a-9b90-912721094713" name="Changes" comment="add env template">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/crustdata-agent-backend-AutoDeployTrigger-aa8faeed-d769-4a44-9834-537652d0f28d.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/crustdata-agent-backend-AutoDeployTrigger-aa8faeed-d769-4a44-9834-537652d0f28d.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.env.template" beforeDir="false" afterPath="$PROJECT_DIR$/.env.template" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/components/Chat.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/components/Chat.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/crustdata-chat-ui/src/setupTests.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +23,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GithubDefaultAccount">
@@ -195,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736113846331</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add env template">
+      <option name="closed" value="true" />
+      <created>1736164928392</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1736164928392</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
