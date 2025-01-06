@@ -35,12 +35,13 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          dockerfilePath: ./Dockerfile
+          dockerfilePath: ./Dockerfile # Provide the correct Dockerfile path
           registryUrl: cad38d755c37acr.azurecr.io
           registryUsername: ${{ secrets.CRUSTDATABACCKEND_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.CRUSTDATABACCKEND_REGISTRY_PASSWORD }}
           containerAppName: crustdata-bacckend
           resourceGroup: gunish
           imageToBuild: cad38d755c37acr.azurecr.io/crustdata-bacckend:${{ github.sha }}
+
 
 

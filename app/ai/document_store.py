@@ -1,6 +1,6 @@
 from haystack_integrations.document_stores.qdrant import QdrantDocumentStore
 
-from app.config import Config
+from app import Config
 
 
 class QdrantSingleton:

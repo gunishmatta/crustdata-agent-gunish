@@ -1,8 +1,9 @@
 from haystack import component
 from haystack.components.generators import AzureOpenAIGenerator
 from haystack.dataclasses import ChatMessage
+from haystack.utils import Secret
 
-from app.config import Config
+from app import Config
 
 
 @component
@@ -14,7 +15,7 @@ class AzureOpenAIModel:
             cls._instance = super(AzureOpenAIModel, cls).__new__(cls)
             cls._instance.generator = AzureOpenAIGenerator(
                 azure_endpoint=Config.AZURE_OPENAI_ENDPOINT,
-                api_key=Config.AZURE_OPENAI_API_KEY,
+                api_key=Secret.from_env_var("AZURE_OPENAI_API_KEY"),
                 azure_deployment="gpt-4-32k"
             )
         return cls._instance

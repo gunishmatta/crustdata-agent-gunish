@@ -9,9 +9,9 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
+from app import Config
 from app.ai.api_validation import parse_api_calls
 from app.ai.pipeline import APIValidationComponent, rag_pipe
-from app.config import Config
 
 app = Flask(__name__)
 

@@ -1,9 +1,8 @@
 
 import uuid
 
-from app import config
+from app import Config
 from app.ai.data_loaders import NotionDataLoader, SlackDataLoader
-from app.config import Config
 
 
 def load_all_data():
