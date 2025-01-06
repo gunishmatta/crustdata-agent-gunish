@@ -3,23 +3,21 @@ import os
 import re
 import threading
 
-from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
-from app.ai.pipeline import APIValidationComponent, parse_api_calls, rag_pipe
-
-load_dotenv()
+from app.ai.api_validation import parse_api_calls
+from app.ai.pipeline import APIValidationComponent, rag_pipe
+from app.config import Config
 
 app = Flask(__name__)
 
-SLACK_TOKEN = os.getenv("SLACK_TOKEN")
-slack_client = WebClient(token=SLACK_TOKEN)
+slack_client = WebClient(token=Config.SLACK_TOKEN)
 
-slack_app = App(token=SLACK_TOKEN)
+slack_app = App(token=Config.SLACK_TOKEN)
 
 ALLOWED_CHANNELS = ["C0878Q5GAMB"]
 # ALLOWED_USERS = ["user1", "user2"]
@@ -127,7 +125,7 @@ def start_flask():
 
 
 def start_slack_bot():
-    SocketModeHandler(slack_app, os.environ["SLACK_APP_TOKEN"]).start()
+    SocketModeHandler(slack_app, Config.SLACK_APP_TOKEN).start()
 
 
 if __name__ == "__main__":

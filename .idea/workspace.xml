@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e19fd9ac-cb5c-4f9a-9b90-912721094713" name="Changes" comment="built pipeline and rest api">
-      <change afterPath="$PROJECT_DIR$/app/ai/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/ai.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/api_validation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/document_store.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/load_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ai/pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data_loaders.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/data_loaders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai/ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ai/load_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ai/load_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/pipeline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/slack_handler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +153,7 @@
       <updated>1736071493502</updated>
       <workItem from="1736071496943" duration="30486000" />
       <workItem from="1736142992496" duration="3316000" />
-      <workItem from="1736148486888" duration="4462000" />
+      <workItem from="1736148486888" duration="5458000" />
     </task>
     <task id="LOCAL-00001" summary="built pipeline and rest api">
       <option name="closed" value="true" />

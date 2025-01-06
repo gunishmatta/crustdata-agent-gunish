@@ -1,16 +1,17 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy the pipeline.py and requirements.txt into the container
-COPY app/ai/pipeline.py /app
-COPY requirements.txt /app
+COPY . /app
 
-# Install the Python dependencies
+# Install dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port 8000
-EXPOSE 8000
+EXPOSE 5001
 
-# Run the application
-CMD ["python", "main.py"]
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV SLACK_APP_TOKEN=<your_slack_app_token>
+ENV SLACK_TOKEN=<your_slack_token>
+
+CMD ["python", "app.py"]
