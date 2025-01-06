@@ -11,7 +11,8 @@ class QdrantSingleton:
         if QdrantSingleton._instance is None:
             QdrantSingleton._instance = QdrantDocumentStore(
                 embedding_dim=384,
-                similarity="cosine"
+                similarity="cosine",
+                host="localhost"
             )
         return QdrantSingleton._instance
 
