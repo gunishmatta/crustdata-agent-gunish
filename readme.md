@@ -50,7 +50,7 @@ SLACK_APP_TOKEN=your-slack-app-token
 
 4. Launch the application
 ```bash
-python app/main.py
+python app/slack_bot.py
 ```
 
 The server will start at `http://localhost:8002`

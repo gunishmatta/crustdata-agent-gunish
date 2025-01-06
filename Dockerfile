@@ -7,6 +7,8 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt 
 
 COPY . .
 
+RUN cp .env.template .env
+
 EXPOSE 8002
 
-CMD ["gunicorn", "-b", "0.0.0.0:8002", "main:app"]
+CMD ["python", "main.py"]
