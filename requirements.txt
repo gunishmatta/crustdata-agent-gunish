@@ -1,6 +1,6 @@
 notion-haystack
 haystack-ai
-sentence-transformers~=3.3.1
+sentence-transformers~=3.2.1
 openai~=1.59.3
 uvicorn~=0.34.0
 fastapi~=0.115.6
@@ -16,3 +16,4 @@ qdrant-client~=1.12.2
 Flask-Cors~=5.0.0
 slack_bolt~=1.22.0
 qdrant-haystack
+gunicorn
