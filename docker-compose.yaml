@@ -1,11 +1,19 @@
-version: '3.8'
-
 services:
-  app:
+  flask-app:
     build: .
-    volumes:
-      - .:/app
     ports:
-      - "8000:8000"
+      - "5001:5001"
     environment:
-      - PYTHONUNBUFFERED=1
+      - .env
+    depends_on:
+      - qdrant
+
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+volumes:
+  qdrant_storage:

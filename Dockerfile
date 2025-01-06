@@ -1,17 +1,24 @@
+# Base image
 FROM python:3.11-slim
 
+# Set working directory
 WORKDIR /app
 
-COPY . /app
-
-# Install dependencies from requirements.txt
+# Copy requirements and install dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy application code
+COPY . .
+
+# Expose Flask app port
 EXPOSE 5001
 
-ENV FLASK_APP=app.py
+# Environment variables
+ENV FLASK_APP=main.py
 ENV FLASK_RUN_HOST=0.0.0.0
-ENV SLACK_APP_TOKEN=<your_slack_app_token>
-ENV SLACK_TOKEN=<your_slack_token>
+ENV QDRANT_HOST=qdrant
+ENV QDRANT_PORT=6333
 
-CMD ["python", "app.py"]
+# Command to run the Flask app
+CMD ["python", "main.py"]
