@@ -121,7 +121,7 @@ def handle_mention(body, logger):
 
 
 def start_flask():
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=8002)
 
 
 def start_slack_bot():

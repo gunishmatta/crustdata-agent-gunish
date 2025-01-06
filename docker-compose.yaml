@@ -2,7 +2,7 @@ services:
   flask-app:
     build: .
     ports:
-      - "5001:5001"
+      - "8002:8002"
     environment:
       - .env
     depends_on:

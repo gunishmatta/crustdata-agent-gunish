@@ -53,7 +53,7 @@ SLACK_APP_TOKEN=your-slack-app-token
 python app/main.py
 ```
 
-The server will start at `http://localhost:5001`
+The server will start at `http://localhost:8002`
 
 ## Technology Stack
 

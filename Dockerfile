@@ -7,6 +7,6 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt 
 
 COPY . .
 
-EXPOSE 5001
+EXPOSE 8002
 
-CMD ["gunicorn", "-b", "0.0.0.0:5001", "main:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:8002", "main:app"]
