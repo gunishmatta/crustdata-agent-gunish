@@ -10,7 +10,6 @@ class Config:
     SLACK_TOKEN = os.getenv("SLACK_TOKEN")
     SLACK_APP_TOKEN = os.getenv("SLACK_APP_TOKEN")
     SLACK_CHANNEL_ID = os.getenv("SLACK_CHANNEL_ID")
-    LLAMA2_HOST = os.getenv("LLAMA2_HOST")
     NOTION_PAGE_ID = os.getenv("NOTION_PAGE_ID")
     QDRANT_URL = os.getenv("QDRANT_URL", "http://localhost:6333")  # Default to localhost
     AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")

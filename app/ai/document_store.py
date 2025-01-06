@@ -1,5 +1,7 @@
 from haystack_integrations.document_stores.qdrant import QdrantDocumentStore
 
+from app.config import Config
+
 
 class QdrantSingleton:
     _instance = None
@@ -23,9 +25,7 @@ class QdrantClientSingleton:
     @staticmethod
     def get_instance():
         if QdrantClientSingleton._instance is None:
-            QdrantClientSingleton._instance = QdrantClient("http://localhost:6333")
+            QdrantClientSingleton._instance = QdrantClient(Config.QDRANT_URL)
         return QdrantClientSingleton._instance
 
 
-# Usage
-client = QdrantClientSingleton.get_instance()

@@ -1,5 +1,3 @@
-import os
-
 from haystack import component
 from haystack.components.generators import AzureOpenAIGenerator
 from haystack.dataclasses import ChatMessage
