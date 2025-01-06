@@ -7,8 +7,6 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt 
 
 COPY . .
 
-RUN cp .env.template .env
-
 EXPOSE 8002
 
-CMD ["python", "main.py"]
+CMD ["python","main.py"]
