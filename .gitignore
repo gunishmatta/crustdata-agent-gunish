@@ -1,4 +1,6 @@
-.env
-/.env
+app/.env
+/app/.env
 /.idea
 /.venv
+__pycache__
+node_modules
