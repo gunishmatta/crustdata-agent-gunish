@@ -7,7 +7,7 @@ from app.ai.pipeline import RagPipeSingleton
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/chat": {"origins": "34.142.215.180"}})
+CORS(app, resources={r"/chat": {"origins": "*"}})
 
 
 ERROR_MISSING_QUESTION = "Question is required."
