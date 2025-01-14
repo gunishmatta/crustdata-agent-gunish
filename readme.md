@@ -1,7 +1,10 @@
-# Crustdata Customer Support Chatbot - Gunish Matta's Submission
+# Crustdata Customer Support Chatbot 
 
 An intelligent customer support chatbot designed to handle technical queries about Crustdata's APIs. 
 Served via REST API to frontend and the bot also integrates with Slack validates API requests, and leverages an expandable knowledge base, aiming to provide accurate technical support.
+
+Please ask questions to the chatbot from these docs
+API Docs - https://crustdata.notion.site/Crustdata-Discovery-And-Enrichment-API-c66d5236e8ea40df8af114f6d447ab48
 
 ## Features
 
@@ -71,17 +74,12 @@ Some of the challenges that I faced:
 After I was done with this, then I started with Haystack to build a standard programmatic RAG Pipeline,
 First started with InMemoryLoaders to load the embeddings but moved to Qdrant due to its better capabilities,
 Also for LLM tried ChatGPT, but its offers very few limits on free, tried LLAMA2 on Google Colab, was good but when I ran it on Local using OLLAMA,
-it hanged up my Mac so moved on to choose, OpenAI's GPT4 model which I hosted on my personal Azure as I have a 500-600 INR credits.
+it hanged up my Mac so moved on to choose, OpenAI's GPT4 model which I hosted on my personal Azure as I had some credits.
 
 Once I was done with basic Q&A setup and getting my basic integration to work, moved on to add API validator 
 to validate API if it is coming from LLM response.
 
-After this I moved to standardise data loaders and made them in a pluggable and abstract way.
-
-Once this was ok, I integrated with Slack and tested Stack integrations too.
-
-Code may look a bit messy but this is what I built in just 12 hours, I gave a challenge to myself and am happy I built it.
-
+After this I moved to standardise data loaders and made them in a pluggable and abstract way. Also, I integrated with Slack and tested Stack integrations too.
 
 Also I would like to thank CrustData's Team for this amazing challenge.
 
