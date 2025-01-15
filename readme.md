@@ -1,5 +1,7 @@
 # Crustdata Customer Support Chatbot 
 
+UI Repo - https://github.com/gunishmatta/crustdata-chat-ui-gunish
+
 An intelligent customer support chatbot designed to handle technical queries about Crustdata's APIs. 
 Served via REST API to frontend and the bot also integrates with Slack validates API requests, and leverages an expandable knowledge base, aiming to provide accurate technical support.
 
